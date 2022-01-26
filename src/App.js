@@ -32,13 +32,6 @@ function App() {
       document.body.style.backgroundColor = '#08082a';
       showAlert("Dark mode enabled!", "success");
       setCheckText("Enable Light Mode");
-      // document.title = "TXtEditor - Dark Mode";
-      // setInterval(() => {
-      //   document.title = "TXtEditor is Amazing";
-      // }, 2000);
-      // setInterval(() => {
-      //   document.title = "Install TXtEditor now";
-      // }, 1500);
     }
     else {
       setMode('light');
@@ -59,7 +52,6 @@ function App() {
             </Route>
             <Route path="/" element={<TextForm heading="Try TXtEditor - Word Counter, Character Counter, Remove Extra Spaces" mode={mode} showAlert={showAlert} />}>
             </Route>
-            {/* <TextForm heading="Enter the text below to analyze" mode={mode} showAlert={showAlert} /> */}
           </Routes>
         </div>
       </Router>

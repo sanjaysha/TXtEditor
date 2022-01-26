@@ -3,11 +3,9 @@ import React, {useState} from 'react'
 export default function TextForm(props) {
    
     const handleonchange = (event) => {
-        // console.log("On Change");
         setText(event.target.value)
     }
     const handleUpClick = () => {
-        // console.log("Uppercase is Clicked " + text);
         let newText = text.toUpperCase();
         setText(newText);
         props.showAlert("Converted to Uppercase!", "success");
@@ -19,10 +17,7 @@ export default function TextForm(props) {
 
     }
     const handleCopyClick = () => {
-        let newText = document.getElementById('myBox');
-        newText.select();
-        navigator.clipboard.writeText(newText.value);
-        document.getSelection().removeAllRanges();
+        navigator.clipboard.writeText(text);
         props.showAlert("Copied!", "success");
     }
     const handleExtraSpaces = () => {
@@ -37,8 +32,6 @@ export default function TextForm(props) {
     }
 
     const [text, setText] = useState('');
-    // text ="new text"; // Wrong way to change the state
-    // setText =("new text"); // Correct way to change the state
     return (
         <>
         <div className="container" style={{color: props.mode === 'light'? 'black' : 'white'}}>
@@ -54,7 +47,7 @@ export default function TextForm(props) {
         </div>
         <div className="container my-3" style={{color: props.mode === 'light'? 'black' : 'white'}}>
             <h2>Your Text Summary</h2>
-            <p>{text.split(" ").filter((element)=>{return element.length !== 0}).length} words and {text.length} characters</p>
+            <p>{text.split(/\s+/).filter((element)=>{return element.length !== 0}).length} words and {text.length} characters</p>
             <p>{0.008 * text.split(" ").filter((element)=>{return element.length !== 0}).length} Minutes read</p>
             <h2>Preview</h2>
             <p>{text.length > 0 ? text:"Nothing to Preview"}</p>
